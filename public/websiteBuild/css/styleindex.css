@@ -1,0 +1,244 @@
+/* Paleta de colores oscuros */
+:root {
+    --primary-dark: #212529;
+    /* Gris oscuro principal */
+    --secondary-dark: #343a40;
+    /* Gris oscuro secundario */
+    --accent-color: #00adb5;
+    /* Turquesa акцент */
+    --text-light: #f8f9fa;
+    /* Texto claro */
+    --hover-accent: #008ba7;
+}
+
+body {
+    background-color: var(--primary-dark);
+    color: var(--text-light);
+}
+
+/* Estilo del header */
+.bg-dark {
+    background-color: var(--secondary-dark) !important;
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+}
+
+/* Estilo del logo */
+.logo {
+    max-width: 60px;
+    height: auto;
+}
+
+/* Menú de navegación */
+.navbar {
+    padding: 0.5rem 1.5rem;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand .fs-5 {
+    font-size: 1.2rem !important;
+    margin-left: 0.5rem;
+}
+
+.nav-link {
+    color: var(--text-light) !important;
+    margin-left: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--accent-color) !important;
+    text-decoration: none;
+}
+
+.nav-link.active {
+    color: var(--accent-color) !important;
+    font-weight: bold;
+}
+
+.navbar-toggler {
+    border-color: var(--text-light);
+}
+
+.navbar-toggler-icon {
+    background-color: var(--text-light);
+    mask: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.75)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    -webkit-mask: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.75)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+/* Buscador */
+.form-control {
+    background-color: var(--primary-dark);
+    color: var(--text-light);
+    border: 1px solid var(--secondary-dark);
+}
+
+.form-control::placeholder {
+    color: #6c757d;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--hover-accent);
+    border-color: var(--hover-accent);
+}
+
+.btn-primary.rounded-pill {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+/* Contenido principal */
+section.mb-5 {
+    margin-bottom: 3rem !important;
+    /* Aumenta el margen inferior entre secciones */
+}
+
+.card {
+    background-color: var(--secondary-dark);
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+    /* Añade una sombra suave */
+    transition: transform 0.3s ease;
+    /* Transición suave para el hover */
+}
+
+.card:hover {
+    transform: translateY(-0.25rem);
+    /* Ligeramente levanta la tarjeta al hacer hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card-link-wrapper {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.card-title {
+    color: var(--accent-color);
+}
+
+.card-text {
+    color: var(--text-light);
+}
+
+.btn-outline-secondary,
+.btn {
+    /* Estilo акцент para los botones "Ver todos..." */
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-outline-secondary:hover,
+.btn:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-dark);
+    border-color: var(--accent-color);
+}
+
+/* Footer */
+.fixed-bottom {
+    background-color: var(--secondary-dark) !important;
+}
+
+.ratio-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: calc(3 / 2 * 100%);
+}
+
+.ratio-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-caption .carousel-button {
+    background-color: rgba(17, 162, 219, 0.7);
+    /* Gris claro semitransparente */
+    border: none;
+    /* Quitamos el borde */
+    color: var(--primary-dark) !important;
+    /* Aseguramos que el texto sea oscuro */
+    transition: background-color 0.3s ease;
+}
+
+.carousel-caption .carousel-button:hover {
+    background-color: rgba(0, 54, 124, 0.8);
+    /* Gris ligeramente más claro al hacer hover */
+}
+
+/* Estilos para las secciones laterales */
+.sidebar {
+    padding: 1rem;
+}
+
+.sidebar-content {
+    background-color: var(--secondary-dark);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.sidebar-title {
+    color: var(--accent-color);
+    margin-bottom: 0.75rem;
+    font-weight: bold;
+}
+
+.social-links a {
+    color: var(--text-light);
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+}
+
+#seriesTooltip {
+    position: absolute;
+    z-index: 1000;
+    display: none;
+    width: 300px;
+    padding: 1rem;
+    background-color: rgba(52, 58, 64, 0.9); /* Fondo secundario oscuro con 90% de opacidad */
+    border: 1px solid rgba(52, 58, 64, 0.5); /* Borde sutil del mismo color */
+    border-radius: 0.5rem;
+    color: var(--text-light); /* Aseguramos que el color general del texto sea claro */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+#tooltipTitle {
+    color: var(--accent-color); /* Título con el color акцент para destacar */
+    margin-bottom: 0.5rem;
+}
+
+#tooltipDescription {
+    color: var(--text-light); /* Descripción con texto claro para legibilidad */
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 0;
+}

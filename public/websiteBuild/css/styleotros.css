@@ -1,0 +1,440 @@
+/* Paleta de colores oscuros */
+:root {
+    --primary-dark: #212529;
+    /* Gris oscuro principal */
+    --secondary-dark: #343a40;
+    /* Gris oscuro secundario */
+    --accent-color: #00adb5;
+    /* Turquesa акцент */
+    --text-light: #f8f9fa;
+    /* Texto claro */
+    --hover-accent: #008ba7;
+}
+
+body {
+    background-color: var(--primary-dark);
+    color: var(--text-light);
+}
+
+/* Estilo del header */
+.bg-dark {
+    background-color: var(--secondary-dark) !important;
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+}
+
+/* Estilo del logo */
+.logo {
+    max-width: 60px;
+    height: auto;
+}
+
+/* Menú de navegación */
+.navbar {
+    padding: 0.5rem 1.5rem;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand .fs-5 {
+    font-size: 1.2rem !important;
+    margin-left: 0.5rem;
+}
+
+.nav-link {
+    color: var(--text-light) !important;
+    margin-left: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--accent-color) !important;
+    text-decoration: none;
+}
+
+.nav-link.active {
+    color: var(--accent-color) !important;
+    font-weight: bold;
+}
+
+.navbar-toggler {
+    border-color: var(--text-light);
+}
+
+.navbar-toggler-icon {
+    background-color: var(--text-light);
+    mask: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.75)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    -webkit-mask: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.75)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+/* Buscador */
+.form-control {
+    background-color: var(--primary-dark);
+    color: var(--text-light);
+    border: 1px solid var(--secondary-dark);
+}
+
+.form-control::placeholder {
+    color: #6c757d;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--hover-accent);
+    border-color: var(--hover-accent);
+}
+
+.btn-primary.rounded-pill {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+/* Contenido principal */
+section.mb-5 {
+    margin-bottom: 3rem !important;
+    /* Aumenta el margen inferior entre secciones */
+}
+
+/* Estilos para las tarjetas de información de series */
+/* Estilos específicos para las tarjetas de información de series */
+.series-info-card {
+    overflow: hidden;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    display: flex;
+    /* Añadimos flex para controlar el layout interno */
+    flex-direction: column;
+    /* Imagen arriba, body abajo */
+    height: 100%;
+    /* Asegura que la tarjeta ocupe la altura de la columna */
+    background-color: var(--secondary-dark);
+    /* Añadimos el color de fondo secundario oscuro */
+    border-radius: 0.5rem;
+    /* Opcional: Añade un borde redondeado si lo deseas */
+    transform: translateY(0);
+}
+
+.series-info-card:hover {
+    transform: translateY(-0.25rem);
+    /* Ligeramente hacia arriba al hacer hover */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
+    /* Sombra más pronunciada */
+}
+
+.series-info-card .ratio-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: calc(4 / 3 * 100%);
+    /* Proporción 4:3 para la imagen */
+    overflow: hidden;
+    /* Asegura que la imagen respete el border-radius si lo hay */
+    border-top-left-radius: 0.5rem;
+    /* Opcional: Borde redondeado superior izquierdo */
+    border-top-right-radius: 0.5rem;
+    /* Opcional: Borde redondeado superior derecho */
+}
+
+.series-info-card .ratio-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.series-info-card:hover .ratio-container img {
+    opacity: 0.8;
+}
+
+.series-info-card .card-body {
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Espacia el contenido interno */
+    flex-grow: 1;
+    /* Permite que el body crezca y ocupe el espacio restante */
+    color: var(--text-light);
+    /* Aseguramos que el texto dentro del body sea claro */
+    border-bottom-left-radius: 0.5rem;
+    /* Opcional: Borde redondeado inferior izquierdo */
+    border-bottom-right-radius: 0.5rem;
+    /* Opcional: Borde redondeado inferior derecho */
+}
+
+.series-info-card .card-title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    /* Mantenemos el color акцент para el título */
+    margin-bottom: 0.25rem;
+    /* Añadido un pequeño margen inferior */
+}
+
+.series-info-card .card-text {
+    font-size: 0.85rem;
+    margin-bottom: 0;
+    color: var(--text-light);
+    /* Aseguramos que el texto de descripción sea claro */
+}
+
+.series-info-card .badge {
+    font-size: 0.75rem;
+    font-weight: normal;
+    border-radius: 0.25rem;
+    /* Añade un pequeño radio de borde */
+}
+
+.series-info-card .badge.bg-success {
+    background-color: #28a745 !important;
+    /* Verde para "En Emisión" */
+    color: var(--text-light) !important;
+    /* Texto claro para mejor contraste */
+}
+
+.series-info-card .badge.bg-secondary {
+    background-color: #6c757d !important;
+    /* Gris para "Finalizado" */
+    color: var(--text-light) !important;
+    /* Texto claro para mejor contraste */
+}
+
+.btn-outline-secondary,
+.btn {
+    /* Estilo акцент para los botones "Ver todos..." */
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-outline-secondary:hover,
+.btn:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-dark);
+    border-color: var(--accent-color);
+}
+
+/* Footer */
+.fixed-bottom {
+    background-color: var(--secondary-dark) !important;
+}
+
+.ratio-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: calc(3 / 2 * 100%);
+}
+
+.ratio-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-caption .carousel-button {
+    background-color: rgba(17, 162, 219, 0.7);
+    /* Gris claro semitransparente */
+    border: none;
+    /* Quitamos el borde */
+    color: var(--primary-dark) !important;
+    /* Aseguramos que el texto sea oscuro */
+    transition: background-color 0.3s ease;
+}
+
+.carousel-caption .carousel-button:hover {
+    background-color: rgba(0, 54, 124, 0.8);
+    /* Gris ligeramente más claro al hacer hover */
+}
+
+/* Estilos para las secciones laterales */
+.sidebar {
+    padding: 1rem;
+}
+
+.sidebar-content {
+    background-color: var(--secondary-dark);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.sidebar-title {
+    color: var(--accent-color);
+    margin-bottom: 0.75rem;
+    font-weight: bold;
+}
+
+.social-links a {
+    color: var(--text-light);
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+}
+
+.card-link-wrapper,
+.card-link-wrapper * {
+    color: var(--text-light) !important;
+    text-decoration: none !important;
+    /* Aseguramos que no haya subrayados */
+}
+
+.card-link-wrapper:hover * {
+    color: var(--accent-color) !important;
+    /* Cambia el color al акцент al hacer hover si lo deseas */
+}
+
+.weekly-schedule-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+}
+
+.weekly-schedule-buttons-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1.5rem;
+    /* Reducimos un poco el margen inferior para pantallas más pequeñas */
+    flex-wrap: wrap;
+    /* Aseguramos que los botones se envuelvan */
+    gap: 0.5rem;
+    /* Añadimos un pequeño espacio entre los botones */
+}
+
+/* Media query para pantallas más pequeñas (ejemplo: hasta 768px de ancho) */
+@media (max-width: 768px) {
+    .weekly-schedule-button {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .weekly-schedule-buttons-container {
+        justify-content: space-between;
+        /* Cambiamos la distribución en pantallas pequeñas */
+    }
+}
+
+/* Media query para pantallas aún más pequeñas (ejemplo: hasta 576px de ancho) */
+@media (max-width: 576px) {
+    .weekly-schedule-button {
+        width: calc(50% - 0.25rem);
+        /* Dos botones por fila */
+        margin-bottom: 0.25rem;
+        /* Pequeño margen inferior entre filas */
+    }
+
+    .weekly-schedule-buttons-container {
+        justify-content: flex-start;
+        /* Alineamos los botones a la izquierda */
+    }
+}
+
+#seasonSelector {
+    background-color: var(--secondary-dark);
+    color: var(--text-light);
+    border: 1px solid var(--secondary-dark); /* Opcional: para que el borde coincida */
+}
+
+#seasonSelector option {
+    background-color: var(--primary-dark); /* Fondo más oscuro para las opciones */
+    color: var(--text-light);
+}
+
+#episodesList .list-group {
+    background-color: transparent; /* El ul será transparente */
+}
+
+#episodesList .list-group-item {
+    background-color: var(--secondary-dark);
+    color: var(--text-light);
+    border-color: #444; /* Un borde sutil para separar los items */
+}
+
+#episodesList .list-group-item a {
+    color: var(--text-light);
+    text-decoration: none;
+}
+
+#episodesList .list-group-item a:hover {
+    color: var(--accent-color); /* Opcional: cambio de color al hacer hover en el enlace */
+}
+
+#seriesTooltip {
+    position: absolute;
+    z-index: 1000;
+    display: none;
+    width: 300px;
+    padding: 1rem;
+    background-color: rgba(52, 58, 64, 0.9); /* Fondo secundario oscuro con 90% de opacidad */
+    border: 1px solid rgba(52, 58, 64, 0.5); /* Borde sutil del mismo color */
+    border-radius: 0.5rem;
+    color: var(--text-light); /* Aseguramos que el color general del texto sea claro */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+#tooltipTitle {
+    color: var(--accent-color); /* Título con el color акцент para destacar */
+    margin-bottom: 0.5rem;
+}
+
+#tooltipDescription {
+    color: var(--text-light); /* Descripción con texto claro para legibilidad */
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 0;
+}
+
+.video-navigation .btn-secondary {
+    background-color: var(--secondary-dark);
+    border-color: var(--secondary-dark);
+    color: var(--text-light);
+}
+
+.video-navigation .btn-secondary:hover {
+    background-color: var(--secondary-light);
+    border-color: var(--secondary-light);
+    color: var(--text-dark);
+}
+
+.video-navigation .btn-primary {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--text-dark);
+}
+
+.video-navigation .btn-primary:hover {
+    background-color: var(--accent-light);
+    border-color: var(--accent-light);
+    color: var(--text-dark);
+}
+
+.video-navigation .btn-info {
+    background-color: var(--info-color);
+    border-color: var(--info-color);
+    color: var(--text-dark);
+}
+
+.video-navigation .btn-info:hover {
+    background-color: var(--info-light);
+    border-color: var(--info-light);
+    color: var(--text-dark);
+}
