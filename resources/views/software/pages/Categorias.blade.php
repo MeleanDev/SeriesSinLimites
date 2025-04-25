@@ -81,5 +81,5 @@
 @endpush
 
 @push('js')
-    <script src="{{ asset('Modujs/categoria.js') }}"></script>
+    <script src="{{ asset('jsModulo/categorias.js') }}"></script>
 @endpush

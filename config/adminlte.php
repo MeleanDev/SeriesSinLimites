@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'use_ico_only' => false,
+    'use_ico_only' => true,
     'use_full_favicon' => false,
 
     /*
@@ -193,7 +193,7 @@ return [
     'classes_body' => '',
     'classes_brand' => 'bg-info',
     'classes_brand_text' => '',
-    'classes_content_wrapper' => 'bg-dark',
+    'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
     'classes_sidebar' => 'sidebar-dark-info elevation-6',
@@ -318,27 +318,27 @@ return [
         ],
         [
             'text' => 'Series',
-            'url' => '',
+            'route' => 'sistema.series',
             'icon' => 'fa fa-play-circle',
         ],
         [
             'text' => 'Capitulos de Series',
-            'url' => '',
+            'route' => 'sistema.capitulos',
             'icon' => 'fa fa-pause',
         ],
         [
             'text' => 'Categorias de Series',
-            'url' => '',
+            'route' => 'sistema.categorias',
             'icon' => 'fa fa-list',
         ],
         [
             'text' => 'Lugar de Alojamientos',
-            'url' => '',
+            'route' => 'sistema.alojamientos',
             'icon' => 'fa fa-cloud',
         ],
         [
             'text' => 'Administradores',
-            'url' => '',
+            'route' => 'sistema.administradores',
             'icon' => 'fa fa-user',
         ],
         ['header' => 'account_settings'],

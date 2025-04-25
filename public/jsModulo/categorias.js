@@ -66,193 +66,193 @@ var table = new DataTable('#datatable', {
     },
 });
 
-// // Consulta Registro
-// consulta = function(id) {
-//     return new Promise((resolve, reject) => {
-//         $.ajax({
-//             url: urlCompleta + "/" + id,
-//             method: "GET",
-//             success: function(Data) {
-//                 resolve(Data);
-//             },
-//             error: function(error) {
-//                 reject(error);
-//             }
-//         });
-//     });
-// };
+// Consulta Registro
+consulta = function(id) {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: urlCompleta + "/Lista/" + id,
+            method: "GET",
+            success: function(Data) {
+                resolve(Data);
+            },
+            error: function(error) {
+                reject(error);
+            }
+        });
+    });
+};
 
-// // Enviar datos
-// $('#formulario').submit(function (e) {
-//     e.preventDefault(); 
+// Enviar datos
+$('#formulario').submit(function (e) {
+    e.preventDefault(); 
 
-//     var formData = new FormData(this);
-//     formData.append('nombre', $.trim($('#nombre').val()));
-//     formData.append('descripcion', $.trim($('#descripcion').val()));
+    var formData = new FormData(this);
+    formData.append('nombre', $.trim($('#nombre').val()));
+    formData.append('descripcion', $.trim($('#descripcion').val()));
 
-//     $.ajax({
-//         url: rutaAccion,
-//         method: 'POST',
-//         data: formData,
-//         dataType: 'JSON',
-//         contentType: false,
-//         processData: false,
-//         cache: false,
-//         headers: {
-//             'X-CSRF-TOKEN': token
-//         },
-//         success: function (data) {
-//             if (data.success) {
-//                 table.ajax.reload(null, false);
-//                 if (accion === 1) {
-//                     notificacion.fire({
-//                         icon: "success",
-//                         title: "Informacion Guardada!!",
-//                         text: "Registro guardado con exito."
-//                     });
-//                 } else {
-//                     notificacion.fire({
-//                         icon: "success",
-//                         title: "Informacion Editada!!",
-//                         text: "Registro Editado con exito."
-//                     });
-//                 }
-//             } else {
-//                 notificacion.fire({
-//                     icon: "error",
-//                     title: "Registro no cargado.",
-//                     text: "Recuerda que no pueden haber 2 Departamento con el misma Nombre."
-//                 });
-//             }
-//         },
-//         error: function (xhr, status, error) {
-//             Swal.fire({
-//                 title: "Falla en el sistema",
-//                 text: "El registro no fue agregado al sistema!!",
-//                 icon: "error"
-//             });
-//         }
-//     });
+    $.ajax({
+        url: rutaAccion,
+        method: 'POST',
+        data: formData,
+        dataType: 'JSON',
+        contentType: false,
+        processData: false,
+        cache: false,
+        headers: {
+            'X-CSRF-TOKEN': token
+        },
+        success: function (data) {
+            if (data.success) {
+                table.ajax.reload(null, false);
+                if (accion === 1) {
+                    notificacion.fire({
+                        icon: "success",
+                        title: "Informacion Guardada!!",
+                        text: "Registro guardado con exito."
+                    });
+                } else {
+                    notificacion.fire({
+                        icon: "success",
+                        title: "Informacion Editada!!",
+                        text: "Registro Editado con exito."
+                    });
+                }
+            } else {
+                notificacion.fire({
+                    icon: "error",
+                    title: "Registro no cargado.",
+                    text: "Recuerda que no pueden haber 2 Categorias con el misma Nombre."
+                });
+            }
+        },
+        error: function (xhr, status, error) {
+            Swal.fire({
+                title: "Falla en el sistema",
+                text: "El registro no fue agregado al sistema!!",
+                icon: "error"
+            });
+        }
+    });
 
-//     $('#modalCRUD').modal('hide');
-// });
+    $('#modalCRUD').modal('hide');
+});
 
-// // Funciones de Botones
-// crear = function () {
-//     rutaAccion = urlCompleta;
-//     accion = 1;
+// Funciones de Botones
+crear = function () {
+    rutaAccion = urlCompleta;
+    accion = 1;
 
-//     // reinicial Formulario
-//     $("#formulario").trigger("reset");
+    // reinicial Formulario
+    $("#formulario").trigger("reset");
 
-//     // Editar Modal
-//     $("#titulo").html("Agregar Departamento");
-//     $("#titulo").attr("class", "modal-title text-white");
-//     $("#bg-titulo").attr("class", "modal-header bg-gradient-primary");
+    // Editar Modal
+    $("#titulo").html("Agregar Categoria");
+    $("#titulo").attr("class", "modal-title text-white");
+    $("#bg-titulo").attr("class", "modal-header bg-gradient-primary");
 
-//     $("#nombre").attr("readonly", false);
-//     $("#descripcion").attr("readonly", false);
+    $("#nombre").attr("readonly", false);
+    $("#descripcion").attr("readonly", false);
 
-//     $('#submit').show()
-//     $('#modalCRUD').modal('show');
-// };
+    $('#submit').show()
+    $('#modalCRUD').modal('show');
+};
 
-// ver = async function(id) {
-//     try {
-//         $("#formulario").trigger("reset");
-//         datos = await consulta(id);
-//         $("#titulo").html("Ver Departamento -> " + datos.nombre);
-//         $("#titulo").attr("class", "modal-title text-white");
-//         $("#bg-titulo").attr("class", "modal-header bg-info");
+ver = async function(id) {
+    try {
+        $("#formulario").trigger("reset");
+        datos = await consulta(id);
+        $("#titulo").html("Ver Categoria -> " + datos.nombre);
+        $("#titulo").attr("class", "modal-title text-white");
+        $("#bg-titulo").attr("class", "modal-header bg-info");
 
-//         // asigancion de valores
-//         $("#nombre").val(datos.nombre);
-//         $("#nombre").attr("readonly", true);
+        // asigancion de valores
+        $("#nombre").val(datos.nombre);
+        $("#nombre").attr("readonly", true);
 
-//         $("#descripcion").val(datos.descripcion);
-//         $("#descripcion").attr("readonly", true);
+        $("#descripcion").val(datos.descripcion);
+        $("#descripcion").attr("readonly", true);
 
-//         $('#submit').hide()
-//         $('#modalCRUD').modal('show');
-//     } catch (error) {
-//         notificacion.fire({
-//             icon: "error",
-//             title: "¡ No Existe !",
-//             text: "Tu registro no se puede ver."
-//         });
-//     }
-// };
+        $('#submit').hide()
+        $('#modalCRUD').modal('show');
+    } catch (error) {
+        notificacion.fire({
+            icon: "error",
+            title: "¡ No Existe !",
+            text: "Tu registro no se puede ver."
+        });
+    }
+};
 
-// editar = async function(id) {
-//     rutaAccion = urlCompleta + '/Editar/' + id;
-//     accion = 2;
+editar = async function(id) {
+    rutaAccion = urlCompleta + '/Actualizar/' + id;
+    accion = 2;
 
-//     try {
-//         $("#formulario").trigger("reset");
-//         datos = await consulta(id);
-//         $("#titulo").html("Editar Departamento -> " + datos.nombre);
-//         $("#titulo").attr("class", "modal-title text-white");
-//         $("#bg-titulo").attr("class", "modal-header bg-warning");
+    try {
+        $("#formulario").trigger("reset");
+        datos = await consulta(id);
+        $("#titulo").html("Editar Categoria -> " + datos.nombre);
+        $("#titulo").attr("class", "modal-title text-white");
+        $("#bg-titulo").attr("class", "modal-header bg-warning");
 
-//         // asigancion de valores
-//         $("#nombre").val(datos.nombre);
-//         $("#nombre").attr("readonly", false);
+        // asigancion de valores
+        $("#nombre").val(datos.nombre);
+        $("#nombre").attr("readonly", false);
 
-//         $("#descripcion").val(datos.descripcion);
-//         $("#descripcion").attr("readonly", false);
+        $("#descripcion").val(datos.descripcion);
+        $("#descripcion").attr("readonly", false);
 
-//         $('#submit').show()
-//         $('#modalCRUD').modal('show');
-//     } catch (error) {
-//         notificacion.fire({
-//             icon: "error",
-//             title: "¡ No Existe !",
-//             text: "Tu registro no se puede ver."
-//         });
-//     }
-// };
+        $('#submit').show()
+        $('#modalCRUD').modal('show');
+    } catch (error) {
+        notificacion.fire({
+            icon: "error",
+            title: "¡ No Existe !",
+            text: "Tu registro no se puede ver."
+        });
+    }
+};
 
-// eliminar = function(id) {
-//     Swal.fire({
-//         title: '¿ Estas seguro que desea eliminar el registro #'+ id +' ?',
-//         text: "¡ No podrás revertir esto !",
-//         icon: 'warning',
-//         showCancelButton: true,
-//         confirmButtonColor: '#3085d6',
-//         cancelButtonColor: '#d33',
-//         confirmButtonText: '¡ Sí, bórralo !',
-//     }).then((result) => {
-//         if (result.isConfirmed) {
-//             $.ajax({
-//                 url: urlCompleta + '/' + id,
-//                 method: "DELETE",
-//                 headers: {
-//                     'X-CSRF-TOKEN': token
-//                 },
-//                 success: function(data) {
-//                     if (data.success) {
-//                         table.row('#' + id).remove().draw();
-//                         notificacion.fire({
-//                             icon: "success",
-//                             title: "¡ Eliminado !",
-//                             text: "Tu registro ha sido eliminado."
-//                         });
-//                     } else {
-//                         notificacion.fire({
-//                             icon: "error",
-//                             title: "¡ Error !",
-//                             text: "Tu registro no ha sido eliminado."
-//                         });
-//                     }
-//                 },
-//                 error: function(xhr, status, error) {
-//                     Swal.fire({
-//                         title: "Error en el sistema",
-//                         text: "El registro no fue agregado al sistema!!",
-//                         icon: "error"
-//                     });
-//                 }
-//             });
-//         }
-//     });
-// };
+eliminar = function(id) {
+    Swal.fire({
+        title: '¿ Estas seguro que desea eliminar el registro #'+ id +' ?',
+        text: "¡ No podrás revertir esto !",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '¡ Sí, bórralo !',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: urlCompleta + '/' + id,
+                method: "DELETE",
+                headers: {
+                    'X-CSRF-TOKEN': token
+                },
+                success: function(data) {
+                    if (data.success) {
+                        table.row('#' + id).remove().draw();
+                        notificacion.fire({
+                            icon: "success",
+                            title: "¡ Eliminado !",
+                            text: "Tu registro ha sido eliminado."
+                        });
+                    } else {
+                        notificacion.fire({
+                            icon: "error",
+                            title: "¡ Error !",
+                            text: "Tu registro no ha sido eliminado."
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire({
+                        title: "Error en el sistema",
+                        text: "El registro no fue agregado al sistema!!",
+                        icon: "error"
+                    });
+                }
+            });
+        }
+    });
+};
