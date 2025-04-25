@@ -48,7 +48,7 @@
 @push('js')
     <script>
         document.oncontextmenu = function() {
-            return false;
+            return true;
         }
     </script>
 @endpush
@@ -56,9 +56,9 @@
 
 @push('css')
     <style type="text/css">
-        {{-- You can add AdminLTE customizations here --}} .main-footer {
-            background-color: rgb(28, 34, 31);
-            color: lightyellow;
+    .main-footer {
+            background-color: #00adb5 !important;
+            color: #ffffe0;
         }
 
         /*
