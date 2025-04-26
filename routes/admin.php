@@ -17,11 +17,11 @@ Route::middleware('auth')->prefix('Sistema')->group(function () {
 
         Route::controller(CategoriaController::class)->group(function () {
             route::get('Series-Categorias', 'index')->name('sistema.categorias');
-            route::get('Series-Categorias/Lista', 'lista'); 
-            route::get('Series-Categorias/Lista/{id}', 'ver')->name('sistema.categorias.ver');
-            route::post('Series-Categorias', 'crear')->name('sistema.categorias.crear');
-            route::post('Series-Categorias/Actualizar', 'actualizar')->name('sistema.categorias.actualizar');
-            route::delete('Series-Categorias/{id}', 'eliminar')->name('sistema.categorias.eliminar');
+            route::get('Series-Categorias/Lista', 'Lista'); 
+            route::get('Series-Categorias/Lista/{id}', 'Ver');
+            route::post('Series-Categorias', 'Crear');
+            route::post('Series-Categorias/Actualizar/{id}', 'Actualizar');
+            route::delete('Series-Categorias/{id}', 'Eliminar');
         });
 
         Route::get('Series-Capitulos', function () {

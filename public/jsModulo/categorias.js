@@ -212,9 +212,10 @@ editar = async function(id) {
     }
 };
 
-eliminar = function(id) {
+eliminar = async function(id) {
+    datos = await consulta(id);
     Swal.fire({
-        title: '¿ Estas seguro que desea eliminar el registro #'+ id +' ?',
+        title: '¿ Estas seguro que desea eliminar el registro #'+ datos.nombre +' ?',
         text: "¡ No podrás revertir esto !",
         icon: 'warning',
         showCancelButton: true,

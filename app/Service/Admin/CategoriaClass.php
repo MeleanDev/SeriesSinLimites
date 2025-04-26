@@ -14,9 +14,23 @@ class CategoriaClass
         $this->DBClass = $DBClass;
     }
 
-    public function getCategorias()
+    public function CategoriaLista()
     {
-        return $this->DBClass->getCategorias();
+        return $this->DBClass->CategoriaLista();
     }
 
+    public function CategoriaListaById($id)
+    {
+        return $this->DBClass->CategoriaListaID($id);
+    }
+
+    public function CategoriaCrear($data)
+    {
+        $this->DBClass->CategoriaCrear($data);
+    }
+    
+    public function CategoriaActualizar($id, $data)
+    {
+        $this->DBClass->CategoriaActualizar($id, $data);
+    }
 }
