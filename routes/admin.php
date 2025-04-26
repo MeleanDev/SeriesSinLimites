@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\AlojamientoController;
 use App\Http\Controllers\Admin\CategoriaController;
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\ProfileController;
 
 Route::middleware('auth')->prefix('Sistema')->group(function () {
@@ -28,9 +28,14 @@ Route::middleware('auth')->prefix('Sistema')->group(function () {
             return view('software.pages.Capitulos');
         })->name('sistema.capitulos');
 
-        Route::get('Series-Alojamientos', function () {
-            return view('software.pages.Alojamientos');
-        })->name('sistema.alojamientos');
+        Route::controller(AlojamientoController::class)->group(function () {
+            route::get('Series-Alojamientos', 'index')->name('sistema.alojamientos');
+            route::get('Series-Alojamientos/Lista', 'Lista'); 
+            route::get('Series-Alojamientos/Lista/{id}', 'Ver');
+            route::post('Series-Alojamientos', 'Crear');
+            route::post('Series-Alojamientos/Actualizar/{id}', 'Actualizar');
+            route::delete('Series-Alojamientos/{id}', 'Eliminar');
+        });
 
         Route::get('Administradores', function () {
             return view('software.pages.Administradores');

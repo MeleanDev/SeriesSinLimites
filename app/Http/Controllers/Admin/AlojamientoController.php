@@ -3,67 +3,67 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CategoriaRequest;
-use App\Models\Categoria;
-use App\Service\Admin\CategoriaClass;
+use App\Http\Requests\AlojamientoRequest;
+use App\Models\Alojamiento;
+use App\Service\Admin\AlojamientoClass;
 use Illuminate\Http\JsonResponse;
 use Illuminate\View\View;
 
-class CategoriaController extends Controller
+class AlojamientoController extends Controller
 {
-    private $categoriaClass;
+    private $alojamientoClass;
 
-    public function __construct(CategoriaClass $categoriaClass)
+    public function __construct(AlojamientoClass $alojamientoClass)
     {
-        $this->categoriaClass = $categoriaClass;
+        $this->alojamientoClass = $alojamientoClass;
     }
 
     public function index(): View
     {
-        return view('software.pages.Categorias');
+        return view('software.pages.Alojamientos');
     }
 
     public function Lista()
     {
-        $datos = $this->categoriaClass->CategoriaLista();
+        $datos = $this->alojamientoClass->AlojamientoLista();
         return datatables()->of($datos)->toJson();
     }
 
     public function ver($id): JsonResponse
     {
-        $datos = $this->categoriaClass->CategoriaListaById($id);
+        $datos = $this->alojamientoClass->AlojamientoListaById($id);
         return response()->json($datos);
     }
 
-    public function Crear(CategoriaRequest $request): JsonResponse
+    public function Crear(AlojamientoRequest $request): JsonResponse
     {
         try {
             $data = $request->validate([
                 'nombre' => 'required|string|max:255|min:3',
                 'descripcion' => 'required|string|max:255|min:3',
             ]);
-            $this->categoriaClass->CategoriaCrear($data);
+            $this->alojamientoClass->AlojamientoCrear($data);
             return response()->json(['success' => true]);
         } catch (\Throwable $th) {
             return response()->json(['error' => true]);
         }
     }
 
-    public function Actualizar(CategoriaRequest $request, Categoria $id): JsonResponse
+    public function Actualizar(AlojamientoRequest $request, Alojamiento $id): JsonResponse
     {
         try {
             $data = $request->validate([
                 'nombre' => 'required|string|max:255|min:3',
                 'descripcion' => 'required|string|max:255|min:3',
             ]);
-            $this->categoriaClass->CategoriaActualizar($id, $data);
+            $this->alojamientoClass->AlojamientoActualizar($id, $data);
             return response()->json(['success' => true]);
         } catch (\Throwable $th) {
             return response()->json(['error' => true]);
         }
     }
 
-    public function Eliminar(Categoria $id): JsonResponse
+    public function Eliminar(Alojamiento $id): JsonResponse
     {
         try {
             $id->delete();
