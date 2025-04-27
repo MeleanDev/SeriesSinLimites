@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdministradorController;
 use App\Http\Controllers\Admin\AlojamientoController;
 use App\Http\Controllers\Admin\CategoriaController;
+use App\Http\Controllers\Admin\SerieController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 
@@ -12,9 +13,15 @@ Route::middleware('auth')->prefix('Sistema')->group(function () {
             return view('dashboard');
         })->name('dashboard');
 
-        Route::get('Series', function () {
-            return view('software.pages.Series');
-        })->name('sistema.series');
+        // Series
+        Route::controller(SerieController::class)->group(function () {
+            route::get('Series', 'index')->name('sistema.series');
+            route::get('Series/Lista', 'Lista'); 
+            route::get('Series/Lista/{id}', 'Ver');
+            route::post('Series', 'Crear');
+            route::post('Series/Actualizar/{id}', 'Actualizar');
+            route::delete('Series/{id}', 'Eliminar');
+        });
 
         // Categorias
         Route::controller(CategoriaController::class)->group(function () {
