@@ -10,16 +10,17 @@
                     aria-label="Cerrar"></button>
             </div>
             <div class="modal-body" style="padding: 2rem;">
-                <form>
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
                     <div class="mb-3">
                         <label for="username" class="form-label" style="font-weight: bold;">Correo
                             Electronico</label>
-                        <input type="text" class="form-control" id="username" placeholder="Tu Correo Electronico"
+                        <input type="text" class="form-control" name="email" id="username" placeholder="Tu Correo Electronico"
                             style="background-color: #495057; color: var(--text-light); border: 1px solid #6c757d; border-radius: 0.3rem; padding: 0.75rem;">
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label" style="font-weight: bold;">Contraseña</label>
-                        <input type="password" class="form-control" id="password" placeholder="Tu contraseña"
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Tu contraseña"
                             style="background-color: #495057; color: var(--text-light); border: 1px solid #6c757d; border-radius: 0.3rem; padding: 0.75rem;">
                     </div>
                     <button type="submit" class="btn btn-primary w-100"

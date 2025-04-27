@@ -10,23 +10,28 @@
                     aria-label="Cerrar"></button>
             </div>
             <div class="modal-body" style="padding: 2rem;">
-                <form>
+                <form method="POST" action="{{ route('register') }}">
+                    @csrf
                     <div class="mb-3">
-                        <label for="username" class="form-label" style="font-weight: bold;">Nombre y
-                            Apellido</label>
-                        <input type="text" class="form-control" id="username" placeholder="Tu Nombre y Apellido"
+                        <label for="username" class="form-label" style="font-weight: bold;">Nombre</label>
+                        <input type="text" name="name" class="form-control" id="username" placeholder="Tu Nombre"
+                            style="background-color: #495057; color: var(--text-light); border: 1px solid #6c757d; border-radius: 0.3rem; padding: 0.75rem;">
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label" style="font-weight: bold;">Apellido</label>
+                        <input type="text" name="apellido" class="form-control" id="username" placeholder="Tu Apellido"
                             style="background-color: #495057; color: var(--text-light); border: 1px solid #6c757d; border-radius: 0.3rem; padding: 0.75rem;">
                     </div>
                     <div class="mb-3">
                         <label for="username" class="form-label" style="font-weight: bold;">Correo
                             Electronico</label>
-                        <input type="text" class="form-control" id="username" placeholder="Tu Correo Electronico"
+                        <input type="text" name="email" class="form-control" id="username" placeholder="Tu Correo Electronico"
                             style="background-color: #495057; color: var(--text-light); border: 1px solid #6c757d; border-radius: 0.3rem; padding: 0.75rem;">
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label" style="font-weight: bold;">Contraseña (8 Caracteres
                             Minimos)</label>
-                        <input type="password" class="form-control" id="password" placeholder="Tu contraseña"
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Tu contraseña"
                             style="background-color: #495057; color: var(--text-light); border: 1px solid #6c757d; border-radius: 0.3rem; padding: 0.75rem;">
                     </div>
                     <button type="submit" class="btn btn-primary w-100"

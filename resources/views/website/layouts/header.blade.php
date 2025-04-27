@@ -1,7 +1,7 @@
 <header class="bg-dark py-3">
     <nav class="navbar navbar-expand-lg navbar-dark container-fluid">
-        <a class="navbar-brand" href="{{route('inicio')}}">
-            <img src="{{asset('websiteBuild/img/logo/logosinFondo.png')}}" alt="Logo" class="logo me-2">
+        <a class="navbar-brand" href="{{ route('inicio') }}">
+            <img src="{{ asset('websiteBuild/img/logo/logosinFondo.png') }}" alt="Logo" class="logo me-2">
             <span class="fs-5">SeriesSinLímites</span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -11,25 +11,41 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav me-3">
                 <li class="nav-item">
-                    <a class="nav-link @if(Route::currentRouteName() === 'inicio') active @endif" aria-current="page" href="{{route('inicio')}}">Inicio</a>
+                    <a class="nav-link @if (Route::currentRouteName() === 'inicio') active @endif" aria-current="page"
+                        href="{{ route('inicio') }}">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @if(Route::currentRouteName() === 'series') active @endif" href="{{route('series')}}">Series</a>
+                    <a class="nav-link @if (Route::currentRouteName() === 'series') active @endif"
+                        href="{{ route('series') }}">Series</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @if(Route::currentRouteName() === 'semanal') active @endif" href="{{route('semanal')}}">Programacion Semanal</a>
+                    <a class="nav-link @if (Route::currentRouteName() === 'semanal') active @endif"
+                        href="{{ route('semanal') }}">Programacion Semanal</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link @if(Route::currentRouteName() === 'favoritos') active @endif" href="{{route('favoritos')}}">Favoritos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('dashboard')}}">Panel Admi</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
-                        <i class="fas fa-user me-1"></i> Iniciar Sesión
-                    </a>
-                </li>
+                @auth
+                    <li class="nav-item">
+                        <a class="nav-link @if (Route::currentRouteName() === 'favoritos') active @endif"
+                            href="{{ route('favoritos') }}">Favoritos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('dashboard') }}">Panel Admi</a>
+                    </li>
+                    <li class="nav-item">
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a class="nav-link " href="{{ route('logout') }}" onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                                <span class="nav-link-text ms-1">Cerrar Sesión</span>
+                            </a>
+                        </form>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            <i class="fas fa-user me-1"></i> Iniciar Sesión
+                        </a>
+                    </li>
+                @endauth
             </ul>
             <form class="d-flex">
                 <input class="form-control rounded-pill me-2" required type="search" placeholder="Buscar">
