@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdministradorController;
 use App\Http\Controllers\Admin\AlojamientoController;
 use App\Http\Controllers\Admin\CategoriaController;
 use Illuminate\Support\Facades\Route;
@@ -15,6 +16,7 @@ Route::middleware('auth')->prefix('Sistema')->group(function () {
             return view('software.pages.Series');
         })->name('sistema.series');
 
+        // Categorias
         Route::controller(CategoriaController::class)->group(function () {
             route::get('Series-Categorias', 'index')->name('sistema.categorias');
             route::get('Series-Categorias/Lista', 'Lista'); 
@@ -28,6 +30,7 @@ Route::middleware('auth')->prefix('Sistema')->group(function () {
             return view('software.pages.Capitulos');
         })->name('sistema.capitulos');
 
+        // Alojamiento
         Route::controller(AlojamientoController::class)->group(function () {
             route::get('Series-Alojamientos', 'index')->name('sistema.alojamientos');
             route::get('Series-Alojamientos/Lista', 'Lista'); 
@@ -37,9 +40,15 @@ Route::middleware('auth')->prefix('Sistema')->group(function () {
             route::delete('Series-Alojamientos/{id}', 'Eliminar');
         });
 
-        Route::get('Administradores', function () {
-            return view('software.pages.Administradores');
-        })->name('sistema.administradores');
+        // Administradores
+        Route::controller(AdministradorController::class)->group(function () {
+            route::get('Administradores', 'index')->name('sistema.administradores');
+            route::get('Administradores/Lista', 'Lista'); 
+            route::get('Administradores/Lista/{id}', 'Ver');
+            route::post('Administradores', 'Crear');
+            route::post('Administradores/Actualizar/{id}', 'Actualizar');
+            route::delete('Administradores/{id}', 'Eliminar');
+        });
 
         // Edit Perfil
         Route::get('Perfil', [ProfileController::class, 'edit'])->name('profile.edit');
