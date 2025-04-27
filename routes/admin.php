@@ -22,6 +22,10 @@ Route::middleware('auth')->prefix('Sistema')->group(function () {
             route::post('Series/Actualizar/{id}', 'Actualizar');
             route::delete('Series/{id}', 'Eliminar');
         });
+        
+        Route::get('Series-Capitulos', function () {
+            return view('software.pages.Capitulos');
+        })->name('sistema.capitulos');
 
         // Categorias
         Route::controller(CategoriaController::class)->group(function () {
@@ -32,10 +36,6 @@ Route::middleware('auth')->prefix('Sistema')->group(function () {
             route::post('Series-Categorias/Actualizar/{id}', 'Actualizar');
             route::delete('Series-Categorias/{id}', 'Eliminar');
         });
-
-        Route::get('Series-Capitulos', function () {
-            return view('software.pages.Capitulos');
-        })->name('sistema.capitulos');
 
         // Alojamiento
         Route::controller(AlojamientoController::class)->group(function () {
